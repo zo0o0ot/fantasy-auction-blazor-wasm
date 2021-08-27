@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic; 
 
 namespace BlazorApp.Shared
 {
@@ -15,7 +16,7 @@ namespace BlazorApp.Shared
         // This is my initial thought on how to store the appropriate data, I want to store the name of the stat and the value of the stat. 
         // Example: {"Potential Points", 81},
         // {"Number of Prospects", 6}
-        public Dictionary<string, int> Stats { get; set; } 
+        public List<(string description, int stat)> Stats { get; set; } 
 
         
     }

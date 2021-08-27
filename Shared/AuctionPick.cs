@@ -14,14 +14,17 @@ namespace BlazorApp.Shared
 
         public Owner WinningBidder { get; set; }
 
-        public float PointsPerDollar => {
-            if (SelectedPlayer.Stats.Count > 0 && WinningBid > 0)
+        public double PointsPerDollar { 
+            get 
             {
-                SelectedPlayer.Stats[0] / WinningBid
-            }
-            else
-            {
-                0.0
+                if (SelectedPlayer.Stats.Count > 0 && WinningBid > 0)
+                {
+                    return (double)SelectedPlayer.Stats[0].stat / WinningBid;
+                }
+                else
+                {
+                    return 0.0;
+                }
             }
         }
         
