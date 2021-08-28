@@ -1,8 +1,11 @@
 ﻿@page "/"
+@using Radzen;
+@inject DialogService DialogService
 
-<h1>Hello, world!</h1>
+<h1>Hello, auction drafters!</h1>
 
-<RadzenButton Text="Hi"></RadzenButton>
+<RadzenButton Text="Start New Draft" Click=@StartNewDraft />
+
 
     <div>
         <h3>Radzen stuff</h3>
@@ -15,3 +18,16 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+@code
+{
+    int draftID = 0;
+    
+    public async Task StartNewDraft()
+    {
+        await DialogService.OpenAsync<NewDraft>($"Draft {draftID}",
+               new Dictionary<string, object>() { { "DraftID", draftID } },
+               new DialogOptions() { Width = "700px", Height = "530px" });
+    }
+
+}
