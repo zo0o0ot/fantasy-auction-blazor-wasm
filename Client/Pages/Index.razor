@@ -4,15 +4,12 @@
 
 <h1>Hello, auction drafters!</h1>
 
+<RadzenButton Text="Start New Draft Inline" Click=@ShowInlineDialog />
 <RadzenButton Text="Start New Draft" Click=@StartNewDraft />
 
 
     <div>
         <h3>Radzen stuff</h3>
-        <RadzenDialog/>
-        <RadzenNotification/>
-        <RadzenContextMenu/>
-        <RadzenTooltip/>
     </div>
 
 Welcome to your new app.
@@ -28,6 +25,22 @@ Welcome to your new app.
         await DialogService.OpenAsync<NewDraft>($"Draft {draftID}",
                new Dictionary<string, object>() { { "DraftID", draftID } },
                new DialogOptions() { Width = "700px", Height = "530px" });
+    }
+    async Task ShowInlineDialog()
+    {
+     var result = await DialogService.OpenAsync("Simple Dialog", ds =>
+        @<div>
+            <p Style="margin-bottom: 1rem">Confirm?</p>
+            <div class="row">
+                <div class="col-md-12">
+                    <RadzenButton Text="Ok" Style="margin-bottom: 10px; width: 150px" />
+                    <RadzenButton Text="Cancel" ButtonStyle="ButtonStyle.Secondary"  Style="margin-bottom: 10px; width: 150px"/>
+                    <RadzenButton Text="Refresh" ButtonStyle="ButtonStyle.Info"  Style="margin-bottom: 10px; width: 150px"/>
+                    Draft ID: @draftID
+                </div>
+            </div>
+        </div>);
+    
     }
 
 }
