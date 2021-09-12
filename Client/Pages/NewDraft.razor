@@ -8,13 +8,13 @@
 <p hidden="@draftOwnerDefaults"><h4>Number of Owners</h4>
 <RadzenNumeric TValue="int" Change=@(args => OnChange(args, "intOwners")) /></p>
 <h3>Auction Budget</h3>    
-<RadzenNumeric TValue="int" Change=@(args => OnChange(args, "intBudget")) />
+<RadzenNumeric TValue="int" Value="400" Change=@(args => OnChange(args, "intBudget")) />
 <p>Current count: @playerCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
-    int? value;
+    int value;
     bool draftOwnerDefaults = true;
     private int playerCount = 0;
     
