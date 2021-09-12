@@ -3,8 +3,10 @@
 <h1>New Draft</h1>
 
 <h3>Draft ID: @draftID</h3>
-<h3>Number of Owners</h3>
-<RadzenNumeric TValue="int" Change=@(args => OnChange(args, "intOwners")) />
+<p>Use default owners? <RadzenSwitch @bind-Value=@draftOwnerDefaults Change=@(args => OnChangeSwitch(args, "boolDefaults")) /></p>
+
+<p hidden="@draftOwnerDefaults"><h4>Number of Owners</h4>
+<RadzenNumeric TValue="int" Change=@(args => OnChange(args, "intOwners")) /></p>
 <h3>Auction Budget</h3>    
 <RadzenNumeric TValue="int" Change=@(args => OnChange(args, "intBudget")) />
 <p>Current count: @playerCount</p>
@@ -13,8 +15,9 @@
 
 @code {
     int? value;
+    bool draftOwnerDefaults = true;
     private int playerCount = 0;
-
+    
     [Parameter] public int draftID { get; set; }
 
     private void IncrementCount()
@@ -26,4 +29,14 @@
     {
         System.Diagnostics.Debug.WriteLine($"{name} changed to {value}");
     }
+    
+    void OnChangeSwitch(bool? draftDefaults, string name)
+    {
+        System.Diagnostics.Debug.WriteLine($"{name} changed to {draftOwnerDefaults.ToString()}");
+    }
+
+    private void ShowOwnerCreate()
+    {
+        draftOwnerDefaults =   !draftOwnerDefaults;
+    }  
 }
