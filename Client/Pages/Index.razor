@@ -13,7 +13,7 @@ Welcome to the Blazor Auction Drafter!
 
 @code
 {
-    int draftID = 0;
+    Guid draftID = Guid.NewGuid();
     
     public async Task StartNewDraft()
     {

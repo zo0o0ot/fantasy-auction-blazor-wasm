@@ -10,8 +10,7 @@
 <p>Use default players? <RadzenSwitch @bind-Value=@draftPlayerDefaults Change=@(args => OnChangeSwitch(args, "boolPlayerDefaults")) /></p>
 <p hidden="@draftOwnerDefaults"><h4>Number of Owners</h4>
 <RadzenNumeric TValue="int" Change=@(args => OnChange(args, "intOwners")) /></p>
-<h3>Auction Budget</h3>    
-<RadzenNumeric TValue="int" Value="400" Change=@(args => OnChange(args, "intBudget")) />
+<p>Auction Budget <RadzenNumeric TValue="int" @bind-Value=@auctionBudget Change=@(args => OnChange(args, "intBudget")) /></p>
 <p>Current count: @playerCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
@@ -29,9 +28,11 @@
     bool draftPositionDefaults = true;
     bool draftPlayerDefaults = true;
 
+    int auctionBudget = 400;
+
     private int playerCount = 0;
     
-    [Parameter] public int draftID { get; set; }
+    [Parameter] public Guid draftID { get; set; }
 
     private void IncrementCount()
     {
@@ -50,6 +51,6 @@
 
     private void ShowOwnerCreate()
     {
-        draftOwnerDefaults =   !draftOwnerDefaults;
+        draftOwnerDefaults = !draftOwnerDefaults;
     }  
 }
