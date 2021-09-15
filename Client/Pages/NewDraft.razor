@@ -7,8 +7,7 @@
 <h3>Draft ID: @draftID</h3>
 <p>Use default owners? <RadzenSwitch @bind-Value=@draftOwnerDefaults Change=@(args => OnChangeSwitch(args, "draftOwnerDefaults")) /></p>
 
-<p hidden="@draftOwnerDefaults"><h4>Comma-separated list of owners:</h4>
-        <RadzenTextBox @bind-Value=@ownersList/> </p>
+<p hidden="@draftOwnerDefaults"><h4>Comma-separated list of owners:</h4> <RadzenTextBox @bind-Value=@ownersList/> </p>
 <p>Use default positions? <RadzenSwitch @bind-Value=@draftPositionDefaults Change=@(args => OnChangeSwitch(args, "boolPositionDefaults")) /></p>
 <p hidden="@draftPositionDefaults"><h4>Deal with it for now.  Sorry.  Change back to yes.</h4></p>
 <p>Use default players? <RadzenSwitch @bind-Value=@draftPlayerDefaults Change=@(args => OnChangeSwitch(args, "boolPlayerDefaults")) /></p>
