@@ -1,4 +1,4 @@
-using Data;
+using BlazorApp.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace Api
     public interface IOwnerData
     {
         Task<Owner> AddOwner(Owner Owner);
-        Task<bool> DeleteOwner(int id);
+        Task<bool> DeleteOwner(int ID);
         Task<IEnumerable<Owner>> GetOwners();
         Task<Owner> UpdateOwner(Owner Owner);
     }
@@ -20,22 +20,22 @@ namespace Api
         {
             new Owner
             {
-                Id = 10,
+                ID = 10,
                 OwnerName = "Ross",
             },
             new Owner
             {
-                Id = 20,
+                ID = 20,
                 OwnerName = "Jawad"
             },
             new Owner
             {
-                Id = 30,
+                ID = 30,
                 OwnerName = "Jared"
             },
             new Owner
             {
-                Id = 40,
+                ID = 40,
                 OwnerName = "Tilo"
             }
         };
@@ -48,21 +48,21 @@ namespace Api
 
         public Task<Owner> AddOwner(Owner Owner)
         {
-            Owner.Id = GetRandomInt();
+            Owner.ID = GetRandomInt();
             Owners.Add(Owner);
             return Task.FromResult(Owner);
         }
 
         public Task<Owner> UpdateOwner(Owner Owner)
         {
-            var index = Owners.FindIndex(p => p.Id == Owner.Id);
+            var index = Owners.FindIndex(p => p.ID == Owner.ID);
             Owners[index] = Owner;
             return Task.FromResult(Owner);
         }
 
-        public Task<bool> DeleteOwner(int id)
+        public Task<bool> DeleteOwner(int ID)
         {
-            var index = Owners.FindIndex(p => p.Id == id);
+            var index = Owners.FindIndex(p => p.ID == ID);
             Owners.RemoveAt(index);
             return Task.FromResult(true);
         }
