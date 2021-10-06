@@ -48,6 +48,11 @@
     {
         //Create a new draft, then close the dialog box and go to the live draft page.
         dialogService.Close(true);
+        if (draftID == Guid.Empty)
+        {
+            draftID = Guid.NewGuid();
+        }
+        //NavigationManager.NavigateTo("livedraft/");
     }
 
     void OnChange(dynamic value, string name)

@@ -1,13 +1,15 @@
 ﻿@page "/"
 @using Radzen.Blazor;
 @inject DialogService DialogService
+@inject NavigationManager NavigationManager
 
 <h1>Hello, auction drafters!</h1>
 
 <RadzenDialog />
 <RadzenButton Text="Start New Draft" Click=@StartNewDraft />
+<RadzenButton Text="Go Directly To New Draft Page" Click=@StartNewDraftPage />
 
-<h3>Welcome to the Blazor Auction Drafting App!</h3>
+<h3>Welcome to the Leagify Auction Drafting App!</h3>
 
 <p hidden=true><SurveyPrompt Title="How is Blazor working for you today?" /></p>
 
@@ -20,6 +22,11 @@
         await DialogService.OpenAsync<NewDraft>($"New Draft",
                new Dictionary<string, object>() { { "DraftID", draftID } },
                new DialogOptions() { Width = "700px", Height = "530px" });
+    }
+    public async Task StartNewDraftPage()
+    {
+        // Navigate to the new draft page with the draft ID
+        NavigationManager.NavigateTo("newdraft/");
     }
 
 }
