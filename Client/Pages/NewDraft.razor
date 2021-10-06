@@ -21,7 +21,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <RadzenButton Click="@((args) => dialogService.Close(true))" Text="OK" Style="margin-bottom: 10px; width: 150px" />
+        <!-- When I click the button, I want to send information from the form to a method that will create a new draft. -->
+        <RadzenButton Click="@((args) => DoTheDraft())" Text="OK" Style="margin-bottom: 10px; width: 150px" />
         <RadzenButton Click="@((args) => dialogService.Close(false))" ButtonStyle="ButtonStyle.Secondary" Text="Cancel" Style="margin-bottom: 10px; width: 150px" />
     </div>
 </div>
@@ -41,6 +42,12 @@
     private void IncrementCount()
     {
         playerCount++;
+    }
+
+    private void DoTheDraft()
+    {
+        //Create a new draft, then close the dialog box and go to the live draft page.
+        dialogService.Close(true);
     }
 
     void OnChange(dynamic value, string name)
